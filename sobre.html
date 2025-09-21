@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuevo correo para ti</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #fff8b0;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      color: #5c3900;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 2em;
+      animation: fadeIn 2s ease-in-out;
+      z-index: 2;
+      position: relative;
+    }
+
+    .envelope-container {
+      margin: 40px auto;
+      width: 300px;
+      height: auto;
+      cursor: pointer;
+      position: relative;
+      animation: fadeIn 3s ease-in-out;
+      z-index: 2;
+    }
+
+    .envelope-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease;
+    }
+
+    .envelope-container:hover img {
+      transform: rotateX(20deg) scale(1.05);
+    }
+
+    .petal {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('petalo.png'); /* Imagen local del pétalo */
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.9;
+      animation: fallZigZag 10s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fallZigZag {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      25% {
+        transform: translate(40px, 25vh) rotate(15deg);
+      }
+      50% {
+        transform: translate(80px, 50vh) rotate(-15deg);
+      }
+      75% {
+        transform: translate(120px, 75vh) rotate(10deg);
+      }
+      100% {
+        transform: translate(160px, 100vh) rotate(-10deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h2>Hola, tienes un nuevo correo 💌</h2>
+
+  <a href="flores.html">
+    <div class="envelope-container">
+      <img src="osito-con-sobre.png" alt="Sobre con osito y flores">
+    </div>
+  </a>
+
+  <script>
+    const totalPetals = 80;
+    for (let i = 0; i < totalPetals; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+
+      // Distribuir desde toda la parte superior izquierda
+      const startX = Math.random() * window.innerWidth * 0.5; // desde el lado izquierdo
+      const startY = -Math.random() * window.innerHeight - 50; // fuera del viewport
+
+      petal.style.left = `${startX}px`;
+      petal.style.top = `${startY}px`;
+      petal.style.animationDelay = `${Math.random() * 6}s`;
+      petal.style.animationDuration = `${8 + Math.random() * 4}s`;
+
+      document.body.appendChild(petal);
+    }
+  </script>
+</body>
+</html>
+
+
